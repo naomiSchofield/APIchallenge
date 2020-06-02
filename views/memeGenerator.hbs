@@ -1,0 +1,12 @@
+{{!-- {{!-- <P>Name: {{nameMeme}} </P>
+<p>{{topText}}</p>
+<p>{{bottomText}}</p> --}}
+
+{{!-- <img src="{{imageMeme}}" alt="image of a meme"> --}}
+ 
+
+<ul>
+    {{#each response}}
+        <li>{{@key}} : {{this}}</li>
+        {{/each}}
+</ul>

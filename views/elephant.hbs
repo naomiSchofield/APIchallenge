@@ -1,0 +1,10 @@
+{{!-- <p>Name: {{name}}</p>
+<p>Species: {{species}} </p>
+<p>Breif Description: {{info}}</p>
+<img src="{{image}}" alt="Image of the named elephant"> --}}
+
+<ul>
+    {{#each response}}
+        <li>{{@key}} : {{this}}</li>
+        {{/each}}
+</ul>
