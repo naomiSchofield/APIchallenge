@@ -3,8 +3,24 @@
 <p>Breif Description: {{info}}</p>
 <img src="{{image}}" alt="Image of the named elephant"> --}}
 
+{{>nav}}
+
+<div>
+{{>refresh}}
+
+
+
+<img src="{{image}}" alt="image of the character. ">
+
+{{!-- 
+<form action="/Elephants" method="post">
+    <input type="number" name="number">
+    <input type="submit" value="submit">
+</form> --}}
+
 <ul>
-    {{#each response}}
+    {{#each data}}
         <li>{{@key}} : {{this}}</li>
         {{/each}}
 </ul>
+</div>

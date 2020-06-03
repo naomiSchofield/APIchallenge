@@ -4,13 +4,21 @@
 <img src="{{image}}" alt="Character Image">
  --}}
 
-<ul>
-    {{#each response}}
-        <li>{{@key}} : {{this}}</li>
-        {{/each}}
-</ul>
+{{>nav}}
 
+<div>
 <form action="/RickAndMorty" method="post">
     <input type="number" name="number">
     <input type="submit" value="submit">
 </form>
+
+<ul>
+    {{#each data}}
+        <li>{{@key}} : {{this}}</li>
+    {{/each}}
+</ul>
+
+<img src="{{image}}" alt="image of the character. ">
+</div>
+
+

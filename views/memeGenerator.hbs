@@ -4,9 +4,19 @@
 
 {{!-- <img src="{{imageMeme}}" alt="image of a meme"> --}}
  
+ {{>nav}}
+
+<div>
+<form action="/memeGenerator" method="post">
+    <input type="number" name="number">
+    <input type="submit" value="submit">
+</form>
 
 <ul>
-    {{#each response}}
+    {{#each data}}
         <li>{{@key}} : {{this}}</li>
-        {{/each}}
+    {{/each}}
 </ul>
+
+<img src="{{image}}" alt="image of the character. ">
+</div>

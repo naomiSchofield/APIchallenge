@@ -4,13 +4,12 @@ const path = require('path')
 const app = express()
 const elephant = require ('./lib/elephantAPI')
 const rickAndMorty = require ('./lib/rickAndMortyAPI')
-const memeGen = require ('./lib/memeGeneratorAPI')
+const memeGenerator = require ('./lib/memeGeneratorAPI')
 const bodyParser = require ('body-parser')
 
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.engine('.hbs', hbs ({
@@ -25,11 +24,10 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/elephant', async (req, res) => {
-    let response = await elephant.filterData()
-
+    let data = await elephant.filterData()
     // console.log(data)
 
-    res.render('elephant', {response})
+    res.render('elephant', {data: data.newData, image: data.image})
 }) 
 
 
@@ -40,22 +38,29 @@ app.get('/RickAndMorty', async(req, res) => {
 
 app.post('/RickAndMorty', async(req, res) => {
     let number = req.body.number
-    let response = await rickAndMorty.filterData(number)
-    // console.log(data)
+    let data = await rickAndMorty(number)
+    console.log(data)
 
-    res.render('rickAndMorty', {response})
+
+
+    res.render('rickAndMorty', {data: data.newData, image: data.image})
 }) 
-
-
 
 
 app.get('/memeGenerator', async (req, res) => {
-    let response = await memeGen.filterData()
-    // console.log(data)
 
-    res.render('memeGenerator', {response,} )
+    res.render('memeGenerator')
+})
+
+app.post('/memeGenerator', async (req, res) => {
+    let number = req.body.number
+    let data = await memeGenerator(number)
+  
+    
+    res.render('memeGenerator', {data: data.newData, image: data.image } )
+    console.log(data)
+
 }) 
-
 
 
 app.listen(3000, () => {
